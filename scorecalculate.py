@@ -15,7 +15,9 @@ sum = 0
 
 while quit == "n" or quit == "N":
 #主程式迴圈
-    
+
+    list.clear(scoredata)
+
     num = 1
     #重新執行時，將資料數重新計算為 1
 
@@ -49,7 +51,7 @@ while quit == "n" or quit == "N":
 
 
         except:
-            print("＜ 錯誤：輸入值非數字，檢查輸入的是否為數字 ＞")
+            print("＜ 錯誤：輸入值不正確，檢查輸入的是否為有效數字（ 0-100 的數字 ） ＞")
             num = 1
             time.sleep(0)
             #倒數 0 秒重新執行
@@ -86,7 +88,7 @@ while quit == "n" or quit == "N":
         
         except:
 
-            print("＜ 錯誤：輸入值非數字，檢查輸入的是否為數字 ＞\n")
+            print("＜ ＜ 錯誤：輸入值不正確，檢查輸入的是否為有效數字（ 0-100 的數字 ） ＞ ＞\n")
 
             num = num - 1
             #不算入錯誤數據的項目數
@@ -101,6 +103,10 @@ while quit == "n" or quit == "N":
         num = num -1
         #避免將結束程式的 -1 加入數據數量影響成績
 
+        if num > 1:
+
+            del scoredata[1]
+
 
     print("所有輸入的成績：\n", scoredata)
 
@@ -113,6 +119,7 @@ while quit == "n" or quit == "N":
 
     for score in scoredata:
         sum += score
+
      # sum+= score == sum = sum + score
 
 
@@ -165,6 +172,8 @@ while quit == "n" or quit == "N":
 
         info = ("只有一筆數據，無標準差或中位數等數據")
 
+        est = ("")
+
 
     print("總分：{} 分，平均：{} 分.\n".format(sum,ave))
     #輸出總分和平均分
@@ -180,6 +189,8 @@ while quit == "n" or quit == "N":
 
     print("")
 
+    del sum , ave
+
 else:
 
     print("thx! Power By Jun Shawn")
@@ -190,5 +201,5 @@ else:
 # 馬公高中資訊科技課程學習檔案
 # Power by 101-23 張君祥
 # 目的: 製作成績計算程式，並加入高一下學期數學的標準差、眾數等數據觀念
-# 目的2: 針對 Error Handling 做優化與補強，確保在任何錯誤下程式也能正常執行
-# 日期: 109.7.1
+#       針對 Error Handling 做優化與補強，確保在任何錯誤下程式也能正常執行
+# 日期: 109.7.7
